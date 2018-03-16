@@ -1,5 +1,4 @@
-# Grupo: Davi Bessa, Diego, Gabriel Suassuna
-number = input('Digite um número de base 2, 10 ou 16:')
+number = input('Digite um número de base 2, 10 ou 16:').upper()
 base = input('O número digitado foi de base 2, 10 ou 16:')
 def dectobin (x):
     x = int(x)
