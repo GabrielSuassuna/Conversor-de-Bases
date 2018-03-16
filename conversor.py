@@ -1,5 +1,6 @@
-number = input('Digite um número de base 2, 10 ou 16:').upper()
+number = input('Digite um número de base 2, 10 ou 16:')
 base = input('O número digitado foi de base 2, 10 ou 16:')
+dicionary = {'A':10,"B":11,"C":12,"D":13,"E":14,"F":15,10:'A',11:'B',12:'C',13:"D",14:'E',15:'F'}
 def dectobin (x):
     x = int(x)
     binary =[]
@@ -8,76 +9,46 @@ def dectobin (x):
         binary.append (a)
         x = x//2
     binary = binary [::-1]
-    numb = ''.join(map(str, binary))
-    return numb
+    b = ''.join(map(str, binary))
+    return b
 def dectohex (x):
     x = int(x)
     hexadecimal = []
-    while x>0:       
-        if x%16 == 15:
-            hexadecimal.append ('F')
-            x = x//16
-        elif x%16 == 14:
-            hexadecimal.append ('E')
-            x = x//16
-        elif x%16 == 13:
-            hexadecimal.append ('D')
-            x = x//16
-        elif x%16 == 12:
-            hexadecimal.append ('C')
-            x = x//16
-        elif x%16 == 11:
-            hexadecimal.append ('B')
-            x = x//16
-        elif x%16 == 10:
-            hexadecimal.append ('A')
-            x = x//16
-        else:
-            a = x%16
+    while x>0:
+        a = x%16
+        if a in dicionary:
+            a = dicionary [a]
             hexadecimal.append (a)
-            x = x//16
+        else:
+            hexadecimal.append (a)
+        x = x//16
     hexadecimal = hexadecimal[::-1]
-    numbh = ''.join(map(str, hexadecimal))
-    return numbh
+    b = ''.join(map(str, hexadecimal))
+    return b
 def bintodec(x):
     y = len (x)
     decimal = []
-    a = 0
+    b = 0
     for binary in x:
         binary = int (binary)
         decimal.append (binary)
     for indice in range (0, y):
-        a =  a + decimal [indice]*(2**(y - indice - 1))
-    return a
+        b =  b + decimal [indice]*(2**(y - indice - 1))
+    return b
 def hextodec(x):
     y = len (x)
-    a = 0
+    b = 0
     decimal = []
-    for hexadecimal in x:
-        if hexadecimal == 'A':
-            hexadecimal = 10
-            decimal.append (hexadecimal)
-        elif hexadecimal == 'B':
-            hexadecimal = 11
-            decimal.append (hexadecimal)
-        elif hexadecimal == 'C':
-            hexadecimal = 12
-            decimal.append (hexadecimal)
-        elif hexadecimal == 'D':
-            hexadecimal = 13
-            decimal.append (hexadecimal)
-        elif hexadecimal == 'E':
-            hexadecimal = 14
-            decimal.append (hexadecimal)
-        elif hexadecimal == 'F':
-            hexadecimal = 15
-            decimal.append (hexadecimal)
+    for a in x:
+        if a in dicionary:
+            a = dicionary [a]
+            decimal.append (a)
         else:
-            hexadecimal = int(hexadecimal)
-            decimal.append (hexadecimal)
+            a = int(a)
+            decimal.append (a)
     for indice in range (0, y):
-        a =  a + decimal [indice]*(16**(y - indice - 1))
-    return a
+        b =  b + decimal [indice]*(16**(y - indice - 1))
+    return b
 if base == '10':
     r1 = dectobin (number)
     print ('Base 2: ','(', r1,')')
