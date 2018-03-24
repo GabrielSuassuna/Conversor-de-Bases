@@ -1,6 +1,6 @@
-number = input('Digite um número de base 2, 8, 10 ou 16:').upper ()
-base = input('O número digitado foi de base 2, 8, 10 ou 16:')
-convert = int(input("Para qual base deseja converter (entre 2, 8, 10 ou 16): "))
+number = input('Digite um número de base 2 até 16:').upper ()
+base = int(input('O número digitado foi de base 2 até 16:'))
+convert = int(input("Para qual base deseja converter de base 2 até 16: "))
 dicionary = {'A':10,"B":11,"C":12,"D":13,"E":14,"F":15,10:'A',11:'B',12:'C',13:"D",14:'E',15:'F'}
 def dectoall (x, y):
     x = int(x)
@@ -30,26 +30,13 @@ def othertodec(x, c):
     for indice in range (0, y):
         b =  b + decimal [indice]*(c**(y - indice - 1))
     return b
-if base == '10':
+if base == 10:
     r1 = dectoall (number, convert)
     print ('Base', convert, ':', '(', r1,')')
-elif base =='2':
-    r1 = othertodec (number)
-    r2 = dectoall (r1, convert)
-    if convert == 10:
-        print ('Base 10: ','(', r1,')')
-    elif convert == 16:
-        print ('Base 16: ','(', r2, ')')
-    else:
-        print ("Essa conversão não é possível")
-elif base =='16':
-    r1 = othertodec (number)
-    r2 = dectoall (r1, convert)
-    if convert == 10:
-        print ('Base 10: ','(', r1,')')
-    elif convert == 16:
-        print ('Base 2: ','(', r2, ')')
-    else:
-        print ("Essa conversão não é possível")
 else:
-    print ('Base não reconhecida, tente outra vez.')
+    r1 = othertodec (number, base)
+    r2 = dectoall (r1, convert)
+    if convert == 10:
+        print ('Base', convert, ': ','(', r1, ')')
+    else:
+        print ('Base', convert, ': ', '(', r2, ')')
